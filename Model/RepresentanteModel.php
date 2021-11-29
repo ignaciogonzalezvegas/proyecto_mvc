@@ -1,28 +1,22 @@
 <?php 
-
 class RepresentanteModel{
 
-private $db;
+    private $db;
+    private $representantes;
 
-private $representantes;
+    public function __construct(){
+        require_once("conexion.php");
+        $this->db = conectar::conexion();
+        $this->$representantes = array();
+    }
 
-public function __contruc(){
+    public function get_representantes(){
+        $consulta = $this->db->query("SELECT * FROM representantes");
 
-    require_once ("./conexion.php");
-    $this->db=conectar::conexion();
-    $this->$representantes=array ();
+        while ($filas = $consulta->fetch(PDO::FETCH_ASSOC));{
+
+            $this->representantes[] = $filas;
+        }        
+        return $this->representantes;
+    }
 }
-
-public function get_representantes (){
-
-$consulta=$this->db->query("SELECT * FROM REPRESENTANTES");
-
-while ($filas=$consulta->fetch(PDO::FETCH _ASSOC));{
-
-    $this->representantes[]=$filas;
-}
-    return $this->representantes;
-}
-}
-
-?>

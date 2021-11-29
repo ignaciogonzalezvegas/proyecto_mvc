@@ -1,11 +1,11 @@
 <?php 
-require("./Model/RepresentanteModel.php");
+require_once("./Model/RepresentanteModel.php");
 
-$productos=new RepresentanteModel ();
+$representantes=new RepresentanteModel();
 
-$MatrizRepresentantes=$representante->get_representantes();
+$MatrizRepresentantes = $representantes->get_representantes();
 
-require_once("./home.php");
+require_once("./Views/home.php");
 
 
 ?>
